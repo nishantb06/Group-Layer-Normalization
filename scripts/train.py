@@ -3,9 +3,6 @@ from dataloader import train_loader
 from test import test
 
 
-train_acc = []
-train_losses = []
-
 from tqdm import tqdm
 def train(model, device, train_loader, optimizer, epoch,L1 = False):
 
@@ -13,6 +10,8 @@ def train(model, device, train_loader, optimizer, epoch,L1 = False):
     pbar = tqdm(train_loader)
     correct  = 0
     processed  = 0
+    train_acc = []
+    train_losses = []
 
     for batch_idx, (data, target) in enumerate(pbar):
 

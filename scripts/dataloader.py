@@ -32,9 +32,12 @@ device = torch.device("cuda" if use_cuda else "cpu")
 kwargs = {'num_workers': 1, 'pin_memory': True} if use_cuda else {}
 train_loader = torch.utils.data.DataLoader(
     datasets.MNIST('../data', train=True, download=True,transform=train_transforms),
-    batch_size=batch_size, shuffle=True, **kwargs)
+    batch_size=batch_size,
+    shuffle=True, #data reshuffled at every epoch,
+    drop_last = True, 
+    **kwargs)
 
 
 test_loader = torch.utils.data.DataLoader(
     datasets.MNIST('../data', train=False, transform=test_transforms),
-    batch_size=batch_size, shuffle=True, **kwargs)
+    batch_size=batch_size, shuffle=True,drop_last = True, **kwargs)
