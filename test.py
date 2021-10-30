@@ -2,13 +2,16 @@ import torch
 import torch.nn.functional as F
 from dataloader import test_loader
 
-test_losses = []
-test_acc = []
+
 
 def test(model, device, test_loader):
     model.eval()
     test_loss = 0
     correct = 0
+    test_losses = []
+    test_acc = []
+    incorrect_examples = []
+    
     with torch.no_grad():
         for data, target in test_loader:
             data, target = data.to(device), target.to(device)

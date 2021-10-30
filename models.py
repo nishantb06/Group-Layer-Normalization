@@ -7,7 +7,7 @@ from utils import get_normalisation
 dropout_value = 0.02
 
 class Net4(nn.Module):
-  def __init__(self,norm,batch_size = 2):
+  def __init__(self,norm,batch_size = -1):
     super(Net4, self).__init__()
 
     self.batch_size = batch_size
