@@ -12,6 +12,7 @@ def train(model, device, train_loader, optimizer, epoch,L1 = False):
     processed  = 0
     train_acc = []
     train_losses = []
+    lambda_l1 = 0.0001
 
     for batch_idx, (data, target) in enumerate(pbar):
 
@@ -30,7 +31,7 @@ def train(model, device, train_loader, optimizer, epoch,L1 = False):
             l1 = 0
             for p in model.parameters():
                 l1 += p.abs().sum()
-            loss += l1
+            loss += lambda_l1*l1
 
         loss.backward()
 
