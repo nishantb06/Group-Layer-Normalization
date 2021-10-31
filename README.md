@@ -66,7 +66,7 @@ Layer  Normalisation
 
 ![Imgur](https://imgur.com/3ApybsI.png)
 
-Batch Normalisation
+Batch + L1 Normalisation
 
 ![Imgur](https://imgur.com/RZ6Kt5N.png)
 
@@ -83,3 +83,15 @@ Layer Norm train/test curves
 
 ![Imgur](https://imgur.com/O8ylxbm.png)
 
+# Inferences
+1. Best accuracies
+
+|  Norm | Best test accuracy | Best train accuracy|
+|-------|--------------------|--------------------|
+|Layer  | 99.04%             | 99.11%             |
+|Group  | 99.10%             | 99.43%             |
+|Batch+L1  | 99.24%             | 99.40%             |
+
+2. Roughly all the 3 normalisations yield the same result which is expected  because the batch size is fairly large(128). On close inspection the Group normalistion model is overfitting more  than the other 2 model
+
+3. The best model is of Batch normalisation + L1, Although L1 regularization is not as effective(we can still see some overfitting), which is expected as L1 doesn't work very well with CNN's
